@@ -9,9 +9,31 @@ const colors = {
     800: "#153e75",
     700: "#2a69ac",
   },
+  primary: {
+    500: "#319795", // teal
+  },
+  secondary: {
+    500: "#dd6b20", // orange
+  },
+  background: {
+    light: "#f7fafc", // light gray
+  },
+  text: {
+    dark: "#2d3748", // dark gray
+  },
 };
 
-const theme = extendTheme({ colors });
+const theme = extendTheme({
+  colors,
+  styles: {
+    global: {
+      "html, body": {
+        backgroundColor: "background.light",
+        color: "text.dark",
+      },
+    },
+  },
+});
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

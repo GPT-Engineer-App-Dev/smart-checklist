@@ -6,7 +6,7 @@ const About = () => (
     <VStack spacing={8} align="start">
       <Flex w="100%" justify="space-between" align="center">
         <Heading as="h1" size="xl">About Us</Heading>
-        <Link as={RouterLink} to="/" color="teal.500" fontWeight="bold">
+        <Link as={RouterLink} to="/" color="primary.500" fontWeight="bold">
           Home
         </Link>
       </Flex>

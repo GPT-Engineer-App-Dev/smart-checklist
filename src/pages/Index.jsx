@@ -79,7 +79,7 @@ const Index = () => {
                   Save
                 </Button>
               ) : (
-                <Button onClick={() => startEditing(index, task.text)} colorScheme="yellow">
+                <Button onClick={() => startEditing(index, task.text)} colorScheme="primary">
                   Edit
                 </Button>
               )}
@@ -87,6 +87,7 @@ const Index = () => {
                 aria-label="Delete task"
                 icon={<FaTrash />}
                 onClick={() => deleteTask(index)}
+                colorScheme="secondary"
               />
             </HStack>
           ))}
@@ -103,9 +104,8 @@ const Footer = () => (
     role="contentinfo"
     py={4}
     px={8}
-    bg="teal.500"
+    bg="primary.500"
     color="white"
-    
     width="100%"
     textAlign="center"
   >
