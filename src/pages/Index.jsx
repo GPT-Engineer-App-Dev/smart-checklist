@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { Container, VStack, HStack, Input, Button, Checkbox, Text, IconButton, Box } from "@chakra-ui/react";
-import { FaTrash } from "react-icons/fa";
+import { Container, VStack, HStack, Input, Button, Checkbox, Text, IconButton, Box, Flex } from "@chakra-ui/react";
+import { FaTrash, FaSmileWink } from "react-icons/fa";
 
 const Index = () => {
   const [tasks, setTasks] = useState([]);
@@ -57,8 +57,28 @@ const Index = () => {
           ))}
         </VStack>
       </VStack>
+      <Footer />
     </Container>
   );
 };
+
+const Footer = () => (
+  <Box
+    as="footer"
+    role="contentinfo"
+    py={4}
+    px={8}
+    bg="teal.500"
+    color="white"
+    position="fixed"
+    bottom="0"
+    width="100%"
+    textAlign="center"
+  >
+    <Text fontSize="lg">
+      Keep calm and carry on ticking tasks off your list! <FaSmileWink />
+    </Text>
+  </Box>
+);
 
 export default Index;
