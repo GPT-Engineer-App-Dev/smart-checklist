@@ -5,6 +5,8 @@ import { FaTrash, FaSmileWink } from "react-icons/fa";
 const Index = () => {
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
+  const [editingIndex, setEditingIndex] = useState(null);
+  const [editedTask, setEditedTask] = useState("");
 
   const addTask = () => {
     if (newTask.trim() !== "") {
@@ -23,6 +25,20 @@ const Index = () => {
       i === index ? { ...task, completed: !task.completed } : task
     );
     setTasks(newTasks);
+  };
+
+  const startEditing = (index, text) => {
+    setEditingIndex(index);
+    setEditedTask(text);
+  };
+
+  const saveTask = (index) => {
+    const newTasks = tasks.map((task, i) =>
+      i === index ? { ...task, text: editedTask } : task
+    );
+    setTasks(newTasks);
+    setEditingIndex(null);
+    setEditedTask("");
   };
 
   return (
@@ -45,9 +61,28 @@ const Index = () => {
                 isChecked={task.completed}
                 onChange={() => toggleTaskCompletion(index)}
               />
-              <Text flex="1" textDecoration={task.completed ? "line-through" : "none"}>
-                {task.text}
-              </Text>
+              {editingIndex === index ? (
+                <Input
+                  value={editedTask}
+                  onChange={(e) => setEditedTask(e.target.value)}
+                  onKeyPress={(e) => {
+                    if (e.key === "Enter") saveTask(index);
+                  }}
+                />
+              ) : (
+                <Text flex="1" textDecoration={task.completed ? "line-through" : "none"}>
+                  {task.text}
+                </Text>
+              )}
+              {editingIndex === index ? (
+                <Button onClick={() => saveTask(index)} colorScheme="blue">
+                  Save
+                </Button>
+              ) : (
+                <Button onClick={() => startEditing(index, task.text)} colorScheme="yellow">
+                  Edit
+                </Button>
+              )}
               <IconButton
                 aria-label="Delete task"
                 icon={<FaTrash />}
