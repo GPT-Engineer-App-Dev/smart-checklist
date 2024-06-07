@@ -105,8 +105,7 @@ const Footer = () => (
     px={8}
     bg="teal.500"
     color="white"
-    position="fixed"
-    bottom="0"
+    
     width="100%"
     textAlign="center"
   >
